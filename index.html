@@ -366,7 +366,7 @@
   /* ---------- PROJECTS ---------- */
   .project-grid{
     display:grid;
-    grid-template-columns:repeat(3, 1fr);
+    grid-template-columns:repeat(2, 1fr);
     gap:24px;
   }
   .project-card{
@@ -422,6 +422,13 @@
     transition:gap .2s ease;
   }
   .project-card:hover .card-action{gap:12px;}
+  .card-meta{
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--text-dim);
+    border-top:1px solid var(--line);
+    padding-top:16px;
+  }
 
   /* ---------- DASHBOARD ---------- */
   .dash{
@@ -709,7 +716,7 @@
       <div class="section-head">
         <div class="eyebrow">Record 03 · Case Studies</div>
         <h2>Featured <span>work</span></h2>
-        <p>Selected engagements spanning governance compliance, IoT analytics and quantitative modeling.</p>
+        <p>Selected engagements spanning governance compliance, IoT analytics, quantitative modeling and an academic capstone project.</p>
       </div>
 
       <div class="project-grid">
@@ -748,6 +755,19 @@
             <span class="pill">Power BI</span>
           </div>
           <a href="#dashboard" class="card-action">View analysis summary →</a>
+        </div>
+
+        <div class="project-card">
+          <div class="card-id">DS‑04 <span class="status">CAPSTONE</span></div>
+          <h3>Smart+: Classroom Student Well‑Being Monitoring</h3>
+          <p>Senior capstone project at Prince Sultan University. Turns Apple Watch vitals into triaged alerts for campus doctors — I led the requirements and validation side: stakeholder analysis, a 35‑respondent survey to confirm the problem, and the KPI framework used to track the pilot across four sprints.</p>
+          <div class="card-tags">
+            <span class="pill">Requirements Elicitation</span>
+            <span class="pill">KPI Design</span>
+            <span class="pill">Survey Research</span>
+            <span class="pill">Agile / Scrum</span>
+          </div>
+          <div class="card-meta">Team of 6 · CS499 Senior Project · PSU</div>
         </div>
       </div>
     </div>
