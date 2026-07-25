@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js" defer onerror="window.__chartLoadFailed=true"></script>
 <style>
   :root{
     --bg:#0A0D10;
@@ -968,7 +968,29 @@
     trendChart.update();
   }
 
-  buildCharts();
+  function showChartFallback(){
+    document.querySelectorAll('.chart-box').forEach(box => {
+      box.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;font-family:var(--font-mono);font-size:12px;color:var(--text-dim);text-align:center;padding:20px;">Chart library failed to load.<br>Refresh the page, or check your connection.</div>';
+    });
+  }
+
+  function initCharts(){
+    if (typeof Chart === 'undefined') {
+      // Library hasn't loaded yet (or failed) — give it one more moment, then fall back gracefully.
+      setTimeout(() => {
+        if (typeof Chart === 'undefined') { showChartFallback(); }
+        else { buildCharts(); }
+      }, 1200);
+      return;
+    }
+    buildCharts();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCharts);
+  } else {
+    initCharts();
+  }
 </script>
 
 </body>
